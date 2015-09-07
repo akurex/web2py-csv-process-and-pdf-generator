@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Bienvenido a Lubeman</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{=URL('static','css/bootstrap3.css')}}" />
+  <link rel="stylesheet" href="{{=URL('static','css/bootstrap-responsive3.css')}}" />
+  <link rel="stylesheet" href="{{=URL('static','css/custom.css')}}" />
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  
+  <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Lubeman Report <small>beta</small></a>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{{=URL('sys','data')}}">Datos</a></li>
+      <li><a href="{{=URL('sys','company')}}">Clientes</a></li>
+      <li><a href="{{=URL('sys','project')}}">Proyectos</a></li>
+      <li><a href="{{=URL('sys','equipment')}}">Equipos</a></li>
+      <li><a href="{{=URL('sys','component')}}">Componentes</a></li>
+    </ul>
+  </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="row">
+
+    <br/>
+
+    <div class=" col-md-12 col-centered">
+      
+      {{if request.args(0):}}
+      {{=form}}
+      {{else:}}
+      <div class="row">
+        
+        <script type="text/javascript">
+                function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+         return true;
+      }
+        </script>
+        <div class="col-md-2">
+        <label for="">ID de la muestra</label>
+          <input id="indice" type="text" onkeypress="return isNumberKey(event)"/>
+        </div>
+               
+      </div>
+      <br/>
+      <div class="row">
+        <a id="form1" class="btn btn-ssa" href="{{=URL('sys','data',args=['form1'])}}"> Interfaz de Espectrofotómetro</a> 
+      </div>
+      <br/>
+      <div class="dropdown row">
+        <a class="btn btn-ssa dropdown-toggle" data-toggle="dropdown"> Interfaz de Infrarrojo <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a id="form2" href="{{=URL('sys','data',args=['form2'])}}">Contaminación</a></li>
+          <li><a id="form3" href="{{=URL('sys','data',args=['form3'])}}">Condición de Aceite</a></li>
+        </ul>
+      </div>
+      <br/>
+      <div class="row">
+        <a id="form4" class="btn btn-ssa" href="{{=URL('sys','data',args=['form4'])}}"> Interfaz de Contador de Partículas</a>
+      </div>
+      <br/>
+      <div class="row">
+        <a id="form5" class="btn btn-ssa" href="{{=URL('sys','data',args=['form5'])}}"> Interfaz de Viscosímetro</a>
+      </div>
+      {{pass}}
+
+    </div>
+
+  
+
+          
+  </div>
+
+
+      <br>
+
+
+    <!-- FOOTER -->
+
+  </div> <!-- end container -->
+  
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="{{=URL('static','js/bootstrap3.min.js')}}"></script>
+  <script type="text/javascript">
+  $(".error_wrapper").hide();
+  </script>
+
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+    
+    var urlform1 = $("#form1").attr('href');
+    var urlform2 = $("#form2").attr('href');
+    var urlform3 = $("#form3").attr('href');
+    var urlform4 = $("#form4").attr('href');
+    var urlform5 = $("#form5").attr('href');
+
+    $("#indice").keyup(function(){
+        $("#form1").attr('href',urlform1.concat("/",$(this).val()));
+        $("#form2").attr('href',urlform2.concat("/",$(this).val()));
+        $("#form3").attr('href',urlform3.concat("/",$(this).val()));
+        $("#form4").attr('href',urlform4.concat("/",$(this).val()));
+        $("#form5").attr('href',urlform5.concat("/",$(this).val()));
+    });
+
+    var value=$.trim($("#indice").val());
+
+    if(value.length>0)
+    {
+        $("#form1").attr('href',urlform1.concat("/",value));
+        $("#form2").attr('href',urlform2.concat("/",value));
+        $("#form3").attr('href',urlform3.concat("/",value));
+        $("#form4").attr('href',urlform4.concat("/",value));
+        $("#form5").attr('href',urlform5.concat("/",value));
+    }
+    
+    });
+
+    $('#indice').addClass('form-control ');
+
+</script>
+</body>
+</html>

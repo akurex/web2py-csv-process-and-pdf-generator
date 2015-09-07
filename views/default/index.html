@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Bienvenido a Lubeman</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{=URL('static','css/bootstrap3.css')}}" />
+  <link rel="stylesheet" href="{{=URL('static','css/bootstrap-responsive3.css')}}" />
+  <link rel="stylesheet" href="{{=URL('static','css/custom.css')}}" />
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  
+  <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Lubeman Report <small>beta</small></a>
+  </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="row">
+
+      <form class="form-vertical" enctype="multipart/form-data" method="post">
+  
+  <div class="col-md-5 col-centered">
+  
+    
+    <div id="login" class="thumbnail tab-pane">
+
+      <div class="modal-header">
+          <h2>Ingresar</h2>
+      </div>
+
+      <div class="modal-body">
+
+        <p class="note">Los campos con <span class="required">*</span> son requeridos</p>
+
+        
+          <fieldset>
+          {{=form.custom.begin}}   
+          <div class="form-group">
+              <label class="control-label" for="_usuario">Correo electrónico <span class="required">*</span></label>
+              <div class="controls">
+                {{=form.custom.widget.email}}
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label" for="_password">Contraseña <span class="required">*</span></label>
+              <div class="controls">
+                {{=form.custom.widget.password}}
+              </div>
+
+          </div>
+          <div class="form-group">
+              
+              <div class="controls">
+                <button class="btn btn-ssa" type="submit">Iniciar sesión</button>
+              </div>
+
+          </div>
+        {{=form.custom.end}}  
+        </fieldset>  
+        
+        </div>
+      
+    
+
+    </div>
+
+
+  </div>
+</form>
+
+      
+  </div>
+
+
+      <br>
+
+
+    <!-- FOOTER -->
+
+  </div> <!-- end container -->
+  
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="{{=URL('static','js/bootstrap3.min.js')}}"></script>
+  <script type="text/javascript">
+  $(".error_wrapper").hide();
+  </script>
+</body>
+</html>

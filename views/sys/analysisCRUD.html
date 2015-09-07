@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Bienvenido a Lubeman</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{=URL('static','css/bootstrap3.css')}}" />
+  <link rel="stylesheet" href="{{=URL('static','css/bootstrap-responsive3.css')}}" />
+  <link rel="stylesheet" href="{{=URL('static','css/custom.css')}}" />
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  
+  <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Lubeman Report <small>beta</small></a>
+    <ul class="nav navbar-nav">
+      <li><a href="{{=URL('sys','data')}}">Datos</a></li>
+      <li><a href="{{=URL('sys','company')}}">Clientes</a></li>
+      <li><a href="{{=URL('sys','project')}}">Proyecto</a></li>
+      <li><a href="{{=URL('sys','equipment')}}">Equipos</a></li>
+      <li><a href="{{=URL('sys','component',args=[session.equipo])}}">Componentes</a></li>
+      <li class="active"><a href="{{=URL('sys','analysis',args=[session.componente])}}">Análisis</a></li>
+    </ul>  
+  </div>
+  </nav>
+
+  <div class="container">
+
+  <div class="row">
+    
+    <div class="col-md-3 alert alert-danger col-centered">
+      <h4 id="id_muestra_alert" class="text-center"></h4>
+    </div>
+    <br>
+  </div>
+
+    <div class="row">
+ 
+  <div class="col-md-12 col-centered">
+    
+  
+    <div class=" col-md-3 col-centered">
+      <a href="#myModal1" class="btn btn-sm btn-default" role="button" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> Aceite</a>
+      <a href="#myModal2" class="btn btn-sm btn-default" role="button" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> Tipo de Mantenimiento</a>
+      
+      <!-- <a href="#myModal3" class="btn btn-sm btn-default" role="button" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> Equipo</a>
+      <a href="#myModal4" class="btn btn-sm btn-default" role="button" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span> Componente</a>
+      -->
+
+    </div>
+
+    <br/>
+    <br/>
+
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked" id="myTab">
+      <li class="active"><a class ="customFont" href="#div5">Información de Equipo</a></li>
+      <li ><a class ="customFont" href="#div1">Información de Mantenimiento</a></li>
+      <li ><a class ="customFont" href="#div3">Información de la Muestra</a></li>
+      <li ><a class ="customFont" href="#div6">Elementos de Desgaste</a></li>
+      <li ><a class ="customFont" href="#div4">Contaminación</a></li>
+      <li ><a class ="customFont" href="#div2">Condición de Aceite</a></li>
+      </ul>
+    </div>
+    
+
+    <div class="col-md-7 tab-content">
+      <div id="div1" class="tab-pane ">
+        {{=form1}}
+      </div>
+      <div id="div2" class="tab-pane">
+        {{=form2}}
+      </div>
+      <div id="div3" class="tab-pane">
+        {{=form3}}
+      </div>
+      <div id="div4" class="tab-pane">
+        {{=form4}}
+      </div>
+      <div id="div5" class="tab-pane active">
+        {{=form5}}
+      </div>
+      <div id="div6" class="tab-pane">
+        {{=form6}}
+      </div>
+    </div>
+
+
+  </div>
+
+     
+  </div>
+
+
+      <br>
+
+    <!-- FOOTER -->
+
+  </div> <!-- end container -->
+  
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="{{=URL('static','js/bootstrap3.min.js')}}"></script>
+  <script type="text/javascript">
+  $(".error_wrapper").hide();
+  </script>
+  <script>
+  $('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
+</script>
+
+
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Aceite</h4>
+      </div>
+      <div class="modal-body">
+        {{=form_aceite}}
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Tipo de Mantenimiento</h4>
+      </div>
+      <div class="modal-body">
+        {{=form_tipo_mantenimiento}}
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script type="text/javascript">
+  $('#info_equipo_id_equipo__row').hide();
+  $('#info_equipo_id_componente__row').hide();
+  $('#mantenimiento_id_tipo_mantenimiento__row').hide();
+  $('#mantenimiento_id_aceite__row').hide();
+
+  $('#id_muestra_alert').html('<strong class="customFontALert">El ID de la muestra es ' + $('#quimico_id').text()+'</strong>');
+</script>
+
+
+</body>
+</html>

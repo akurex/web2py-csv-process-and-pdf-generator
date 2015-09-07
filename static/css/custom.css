@@ -1,0 +1,80 @@
+
+.customfont{
+            color:#069792;
+        }
+
+h4{
+            font-size: 20px;
+        }
+
+span.required {
+	color: #ff0000;
+}
+
+.loginpics{
+	padding-top: 2.5em;
+
+}
+
+.modal-body {
+  max-height: 720px;
+}
+
+.error_wrapper{
+  
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+
+@media only screen and (max-width: 768px) {
+  body {
+    padding-top: 0;
+  }
+  .btn-toolbar {
+    float: none;
+  }
+
+
+}
+
+.btn-ssa {
+  color: #ffffff;
+  background-color: #059A5E;
+  border-color: #059A5E;
+}
+
+.btn-ssa:hover,
+.btn-ssa:focus,
+.btn-ssa:active,
+.btn-ssa.active,
+.open .dropdown-toggle.btn-ssa {
+  color: #ffffff;
+  background-color: #008752;
+  border-color: #008752;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #ffffff;
+  background-color: #008752;
+}
+
+.customFont{
+  color: black;
+}

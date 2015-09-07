@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <title>Bienvenido a Lubeman</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{=URL('static','css/bootstrap3.css')}}" />
+  <link rel="stylesheet" href="{{=URL('static','css/bootstrap-responsive3.css')}}" />
+  <link rel="stylesheet" href="{{=URL('static','css/custom.css')}}" />
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  
+  <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Lubeman Report <small>beta</small></a>
+    <ul class="nav navbar-nav">
+      <li><a href="{{=URL('sys','data')}}">Datos</a></li>
+      <li><a href="{{=URL('sys','company')}}">Clientes</a></li>
+      <li><a href="{{=URL('sys','project')}}">Proyectos</a></li>
+      <li><a href="{{=URL('sys','equipment')}}">Equipos</a></li>
+      <li class="active"><a href="{{=URL('sys','component')}}">Componentes</a></li>
+    </ul>
+  </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="row">
+
+    <div>
+      <a href="{{=URL('sys','componentCRUD')}}" class="btn btn-sm btn-ssa"><span class="glyphicon glyphicon-plus"></span> Nuevo Componente</a>
+    </div>
+
+    <br/>
+
+    <div class=" col-md-12 col-centered">
+        <table id="tabla-resultados" class ="table">
+            <thead>
+              <tr>
+                <th>{{=T('ID Componente')}}</th>
+                <th>Modelo de Equipo</th>
+                <th>Modelo de Componente</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>   
+            {{for row in rows:}}
+              <tr>
+                <td>{{=row.componente.id}}</td>
+
+                <td>{{=row.equipo.modelo}}</td>
+                <td>{{=row.item.nombre}} - {{=row.marca.nombre}}</td>
+                <td>
+                <a href="{{=URL('sys','analysis',args=[row.componente.id])}}" class="btn btn-sm btn-ssa"><span class=""></span> Lista de análisis</a>
+                <a href="{{=URL('sys','componentCRUD',args=[row.componente.id])}}" class="btn btn-sm btn-ssa"><span class="glyphicon glyphicon-pencil"></span></a>
+                </td>
+              </tr>
+            {{pass}}
+
+            </tbody>
+        </table>
+    </div>
+
+  
+
+          
+  </div>
+
+
+      <br>
+
+
+    <!-- FOOTER -->
+
+  </div> <!-- end container -->
+  
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="{{=URL('static','js/bootstrap3.min.js')}}"></script>
+  <script src="{{=URL('static','js/jquery.dataTables.js')}}"></script>
+  <script src="{{=URL('static','js/datatables.bootstrap.js')}}"></script>
+  <script type="text/javascript">
+  $(".error_wrapper").hide();
+
+  $('#tabla-resultados').dataTable( {
+        "sDom": "<'row'<'col-md-12'l><'col-md-12'f>r>t<'row'<'col-md-12'i><'col-md-12'p>>",
+        "sPaginationType": "bootstrap"
+        
+    } );
+
+    $("#tabla-resultados_length").hide(); //Para mostrar la cantidad de entradas para la paginación
+
+  </script>
+</body>
+</html>
